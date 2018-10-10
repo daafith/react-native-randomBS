@@ -1,11 +1,11 @@
 import React from 'react';
-import {StyleSheet, Text, View, Button, TouchableHighlight, Share, Image, Platform} from 'react-native';
+import {StyleSheet, Text, View, Button, TouchableHighlight, Share, Image, Platform, StatusBar} from 'react-native';
 import data from './assets/bs.json';
 
 export default class App extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {bs: 'Your daily BS'};
+        this.state = {bs: 'Ready for some BS?'};
     }
 
     generateBs = () => {
@@ -25,7 +25,11 @@ export default class App extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Button style={styles.submit} onPress={this.generateBs} title={'Generate BS'}></Button>
+                <StatusBar
+                    barStyle="light-content"
+                    backgroundColor="#4F6D7A"
+                />
+                <Button style={styles.submit} color={'#650e14'} onPress={this.generateBs} title={'Generate BS'}></Button>
                 <Text style={styles.generatedBs}>{this.state.bs}</Text>
                 <TouchableHighlight underlayColor={'transparent'}
                                     onPress={() => this.onSharePress(this.state.bs)}>
@@ -45,7 +49,7 @@ const styles = StyleSheet.create({
         paddingTop: 40,
         paddingLeft: 20,
         paddingRight: 20,
-        backgroundColor: '#d5d5d5',
+        backgroundColor: '#4F6D7A',
         alignItems: 'center',
     },
     submit: {
@@ -55,20 +59,20 @@ const styles = StyleSheet.create({
         marginTop: 10,
         paddingTop: 20,
         paddingBottom: 20,
-        backgroundColor: '#68a0cf',
-        borderRadius: 0.4,
+        borderRadius: 10,
         borderWidth: 3,
-        borderColor: '#948494',
+        borderColor: '#fff',
     },
     generatedBs: {
         marginTop: 20,
         marginBottom: 20,
+        color: '#F5FCFF',
         fontSize: 16,
         fontFamily: Platform.OS === 'ios' ? 'American Typewriter' : 'Roboto',
         textAlign: 'center'
     },
     share: {
-        width: 32,
-        height: 32
+        width: 26,
+        height: 26
     }
 });

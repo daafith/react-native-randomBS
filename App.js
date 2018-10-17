@@ -62,11 +62,7 @@ export default class App extends React.Component {
     }
 
     renderIf(condition, content) {
-        if (condition) {
-            return content;
-        } else {
-            return null;
-        }
+        return condition? content : null;
     }
 }
 

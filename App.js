@@ -1,6 +1,10 @@
 import React from 'react';
 import {StyleSheet, Text, View, Button, TouchableHighlight, Share, Image, Platform, StatusBar} from 'react-native';
-import data from './assets/bs.json';
+import adverbs from './assets/adverbs.json';
+import verbs from './assets/verbs.json';
+import adj from './assets/adjectives.json';
+import nouns from './assets/nouns.json';
+
 
 export default class App extends React.Component {
     constructor(props) {
@@ -9,10 +13,18 @@ export default class App extends React.Component {
     }
 
     generateBs = () => {
-        var x = Math.floor((Math.random() * data.bs.length));
         this.setState({
-            bs: data.bs[x]
+            bs: this.generate()
         })
+    }
+
+    generate() {
+        return `${this.random(adverbs.adverbs)} ${this.random(verbs.verbs)} ${this.random(adj.adjectives)} ${this.random(nouns.nouns)}`;
+    }
+
+    random(arr) {
+        var x = Math.floor((Math.random() * arr.length));
+        return arr[x];
     }
 
     onSharePress = (text) => {
@@ -29,7 +41,12 @@ export default class App extends React.Component {
                     barStyle="light-content"
                     backgroundColor="#4F6D7A"
                 />
-                <Button style={styles.submit} color={'#650e14'} onPress={this.generateBs} title={'Generate BS'}></Button>
+                {/*<Button buttonStyle={styles.submit} color={'#650e14'} onPress={this.generateBs} title={'Generate BS'}></Button>*/}
+                <TouchableHighlight underlayColor={'transparent'} onPress={() => this.generateBs()}>
+                    <Text style={styles.button}>
+                        Generate BS
+                    </Text>
+                </TouchableHighlight>
                 <Text style={styles.generatedBs}>{this.state.bs}</Text>
                 <TouchableHighlight underlayColor={'transparent'}
                                     onPress={() => this.onSharePress(this.state.bs)}>
@@ -52,16 +69,20 @@ const styles = StyleSheet.create({
         backgroundColor: '#4F6D7A',
         alignItems: 'center',
     },
-    submit: {
-        width: 400,
-        marginRight: 40,
-        marginLeft: 40,
-        marginTop: 10,
-        paddingTop: 20,
-        paddingBottom: 20,
-        borderRadius: 10,
-        borderWidth: 3,
-        borderColor: '#fff',
+    button: {
+        height: 48,
+        width: 'auto',
+        lineHeight: 44,
+        paddingLeft: 5,
+        paddingRight: 5,
+        textAlign: 'center',
+        borderRadius: 50,
+        borderWidth: 2,
+        borderColor: '#DDBB66',
+        // font-family: MuseoSansRounded;
+        fontSize: 16,
+        color:'#FFF',
+        backgroundColor: '#DDBB66',
     },
     generatedBs: {
         marginTop: 20,

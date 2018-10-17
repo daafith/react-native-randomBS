@@ -1,7 +1,8 @@
 {
-  "adverbs": [
+  "a": [
     "assertively",
     "authoritatively",
+    "basically",
     "collaboratively",
     "compellingly",
     "competently",
@@ -15,21 +16,28 @@
     "efficiently",
     "energistically",
     "enthusiastically",
+    "essentially",
+    "fundamentally",
     "fungibly",
     "globally",
-    "holisticly",
+    "holistically",
+    "incrementally",
     "interactively",
     "intrinsically",
+    "instinctively",
     "monotonectally",
     "objectively",
     "phosfluorescently",
     "proactively",
     "professionally",
+    "proficiently",
     "progressively",
+    "prudently",
     "quickly",
     "rapidiously",
     "seamlessly",
     "synergistically",
-    "uniquely"
+    "uniquely",
+    "qualitatively"
   ]
 }

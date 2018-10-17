@@ -4,12 +4,12 @@ import adverbs from './assets/adverbs.json';
 import verbs from './assets/verbs.json';
 import adjectives from './assets/adjectives.json';
 import nouns from './assets/nouns.json';
-
+const initialText = 'Ready for some BS?';
 
 export default class App extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {bs: 'Ready for some BS?'};
+        this.state = {bs: initialText};
     }
 
     generateBs = () => {
@@ -47,15 +47,26 @@ export default class App extends React.Component {
                     </Text>
                 </TouchableHighlight>
                 <Text style={styles.generatedBs}>{this.state.bs}</Text>
-                <TouchableHighlight underlayColor={'transparent'}
+                {
+                    this.renderIf(this.state.bs !== initialText,
+                    <TouchableHighlight underlayColor={'transparent'}
                                     onPress={() => this.onSharePress(this.state.bs)}>
-                    <Image
-                        style={styles.share}
-                        source={require('./assets/share.png')}
-                    />
-                </TouchableHighlight>
+                        <Image
+                            style={styles.share}
+                            source={require('./assets/share.png')}
+                        />
+                    </TouchableHighlight>)
+                }
             </View>
         );
+    }
+
+    renderIf(condition, content) {
+        if (condition) {
+            return content;
+        } else {
+            return null;
+        }
     }
 }
 

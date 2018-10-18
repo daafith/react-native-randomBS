@@ -1,10 +1,11 @@
 import React from 'react';
 import {StyleSheet, Text, View, Button, TouchableHighlight, Share, Image, Platform, StatusBar} from 'react-native';
+import Balloon from "react-native-balloon";
 import adverbs from './assets/adverbs.json';
 import verbs from './assets/verbs.json';
 import adjectives from './assets/adjectives.json';
 import nouns from './assets/nouns.json';
-const initialText = 'Ready for some BS?';
+const initialText = 'Click me to generate some corporate bullshit. I have much nonsense to share so click all you want.';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -41,25 +42,26 @@ export default class App extends React.Component {
                     barStyle="light-content"
                     backgroundColor="#fff"
                 />
-                <TouchableHighlight underlayColor={'transparent'} onPress={() => this.generateBs()}>
-                    <Text style={styles.button}>
-                        Generate BS
-                    </Text>
-                </TouchableHighlight>
-                <Text style={styles.generatedBs}>{this.state.bs}</Text>
+                <Balloon
+                    triangleDirection='bottom'
+                    triangleOffset='50%'
+                >
+                    <Text style={styles.generatedBs}>{this.state.bs}</Text>
+                </Balloon>
                 <View style={styles.imgView}>
+                    <TouchableHighlight underlayColor={'transparent'}
+                                        onPress={() => this.generateBs()}>
                     <Image
                         style={styles.boss}
                         source={require('./assets/boss.jpg')}
                     />
+                    </TouchableHighlight>
                     {
                         this.state.bs !== initialText &&
-                        <TouchableHighlight underlayColor={'transparent'}
-                                            onPress={() => this.onSharePress(this.state.bs)}>
-                            <Image
-                                style={styles.share}
-                                source={require('./assets/share.png')}
-                            />
+                        <TouchableHighlight underlayColor={'transparent'} onPress={() => this.onSharePress(this.state.bs)}>
+                            <Text style={styles.button}>
+                                Share
+                            </Text>
                         </TouchableHighlight>
                     }
                 </View>

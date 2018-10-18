@@ -16,7 +16,7 @@ export default class App extends React.Component {
         this.setState({
             bs: this.formattedBs()
         })
-    }
+    };
 
     formattedBs() {
         return `${this.randomElement(adverbs.a)} ${this.randomElement(verbs.v)} ${this.randomElement(adjectives.a)} ${this.randomElement(nouns.n)}`;
@@ -30,16 +30,16 @@ export default class App extends React.Component {
     onSharePress = (text) => {
         const shareOptions = {
             message: text,
-        }
+        };
         Share.share(shareOptions);
-    }
+    };
 
     render() {
         return (
             <View style={styles.container}>
                 <StatusBar
                     barStyle="light-content"
-                    backgroundColor="#e5e5e5"
+                    backgroundColor="#fff"
                 />
                 <TouchableHighlight underlayColor={'transparent'} onPress={() => this.generateBs()}>
                     <Text style={styles.button}>
@@ -47,16 +47,23 @@ export default class App extends React.Component {
                     </Text>
                 </TouchableHighlight>
                 <Text style={styles.generatedBs}>{this.state.bs}</Text>
-                {
-                    this.state.bs !== initialText &&
-                    <TouchableHighlight underlayColor={'transparent'}
-                                    onPress={() => this.onSharePress(this.state.bs)}>
-                        <Image
-                            style={styles.share}
-                            source={require('./assets/share.png')}
-                        />
-                    </TouchableHighlight>
-                }
+                <View style={styles.imgView}>
+                    <Image
+                        style={styles.boss}
+                        source={require('./assets/boss.jpg')}
+                    />
+                    {
+                        this.state.bs !== initialText &&
+                        <TouchableHighlight underlayColor={'transparent'}
+                                            onPress={() => this.onSharePress(this.state.bs)}>
+                            <Image
+                                style={styles.share}
+                                source={require('./assets/share.png')}
+                            />
+                        </TouchableHighlight>
+                    }
+                </View>
+
             </View>
         );
     }
@@ -72,7 +79,7 @@ const styles = StyleSheet.create({
         paddingTop: 40,
         paddingLeft: 20,
         paddingRight: 20,
-        backgroundColor: '#e5e5e5',
+        backgroundColor: '#fff',
         alignItems: 'center',
     },
     button: {
@@ -98,6 +105,19 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontFamily: getFont(),
         textAlign: 'center'
+    },
+    imgView: {
+        flex: 1,
+        top: 0,
+        left: 0,
+        alignItems: 'center'
+    },
+    boss: {
+        resizeMode: 'contain',
+        height: 80,
+        width: 80,
+        borderRadius: 40,
+        marginBottom: 30
     },
     share: {
         width: 26,

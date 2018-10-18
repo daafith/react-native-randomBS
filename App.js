@@ -48,22 +48,22 @@ export default class App extends React.Component {
                 </TouchableHighlight>
                 <Text style={styles.generatedBs}>{this.state.bs}</Text>
                 {
-                    this.renderIf(this.state.bs !== initialText,
+                    this.state.bs !== initialText &&
                     <TouchableHighlight underlayColor={'transparent'}
                                     onPress={() => this.onSharePress(this.state.bs)}>
                         <Image
                             style={styles.share}
                             source={require('./assets/share.png')}
                         />
-                    </TouchableHighlight>)
+                    </TouchableHighlight>
                 }
             </View>
         );
     }
+}
 
-    renderIf(condition, content) {
-        return condition? content : null;
-    }
+function getFont() {
+    return Platform.OS === 'ios' ? 'American Typewriter' : 'Roboto';
 }
 
 const styles = StyleSheet.create({
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
         paddingLeft: 5,
         paddingRight: 5,
         textAlign: 'center',
-        fontFamily: Platform.OS === 'ios' ? 'American Typewriter' : 'Roboto',
+        fontFamily: getFont(),
         borderRadius: 50,
         borderWidth: 2,
         borderColor: '#DDBB66',
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         color: '#405966',
         fontSize: 16,
-        fontFamily: Platform.OS === 'ios' ? 'American Typewriter' : 'Roboto',
+        fontFamily: getFont(),
         textAlign: 'center'
     },
     share: {

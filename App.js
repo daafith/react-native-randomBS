@@ -1,11 +1,11 @@
 import React from 'react';
-import {StyleSheet, Text, View, Button, TouchableHighlight, Share, Image, Platform, StatusBar} from 'react-native';
+import {StyleSheet, Text, View, Animated, TouchableHighlight, Share, Image, Platform, StatusBar} from 'react-native';
 import Balloon from "react-native-balloon";
 import adverbs from './assets/adverbs.json';
 import verbs from './assets/verbs.json';
 import adjectives from './assets/adjectives.json';
 import nouns from './assets/nouns.json';
-const initialText = 'Click me to generate some corporate bullshit. I have much nonsense to share so click all you want.';
+const initialText = 'Tap me to generate some corporate bullshit. I have much nonsense to share, so tap all you want.';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -58,15 +58,47 @@ export default class App extends React.Component {
                     </TouchableHighlight>
                     {
                         this.state.bs !== initialText &&
-                        <TouchableHighlight underlayColor={'transparent'} onPress={() => this.onSharePress(this.state.bs)}>
+                        <FadeInView><TouchableHighlight underlayColor={'transparent'} onPress={() => this.onSharePress(this.state.bs)}>
                             <Text style={styles.button}>
                                 Share
                             </Text>
                         </TouchableHighlight>
+                        </FadeInView>
                     }
                 </View>
 
             </View>
+        );
+    }
+}
+
+class FadeInView extends React.Component {
+    state = {
+        fadeAnim: new Animated.Value(0),
+    }
+
+    componentDidMount() {
+        Animated.timing(
+            this.state.fadeAnim,
+            {
+                toValue: 1,
+                duration: 1000,
+            }
+        ).start();
+    }
+
+    render() {
+        let { fadeAnim } = this.state;
+
+        return (
+            <Animated.View
+                style={{
+                    ...this.props.style,
+                    opacity: fadeAnim,
+                }}
+            >
+                {this.props.children}
+            </Animated.View>
         );
     }
 }
@@ -101,8 +133,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#DDBB66',
     },
     generatedBs: {
-        marginTop: 20,
-        marginBottom: 20,
+        marginTop: 15,
+        marginBottom: 15,
         color: '#405966',
         fontSize: 16,
         fontFamily: getFont(),

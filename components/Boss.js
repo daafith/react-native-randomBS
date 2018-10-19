@@ -5,13 +5,15 @@ import * as PropTypes from "prop-types";
 
 export class Boss extends Component {
     render() {
-        return <TouchableHighlight underlayColor={"transparent"}
-                                   onPress={this.props.onPress}>
-            <Image
-                style={styles.boss}
-                source={this.props.source}
-            />
-        </TouchableHighlight>;
+        return (
+            <TouchableHighlight underlayColor={"transparent"}
+                                onPress={this.props.onPress}>
+                <Image
+                    style={styles.boss}
+                    source={this.props.source}
+                />
+            </TouchableHighlight>
+        );
     }
 }
 

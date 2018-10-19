@@ -6,12 +6,15 @@ import styles from "../styles";
 
 export class Bullshit extends Component {
     render() {
-        return <Balloon
+        return (
+            <Balloon
             triangleDirection='bottom'
             triangleOffset='50%'
-        >
-            <Text style={styles.generatedBs}>{this.props.bs}</Text>
-        </Balloon>;
+            borderColor="#405966"
+            >
+                <Text style={styles.generatedBs}>{this.props.bs}</Text>
+            </Balloon>
+        );
     }
 }
 

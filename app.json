@@ -9,11 +9,11 @@
       "ios",
       "android"
     ],
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/ic_launcher.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/ic_splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -25,6 +25,9 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "nl.testbeacon.randombs"
     },
     "githubUrl": "https://github.com/daafith/react-native-randomBS"
   }

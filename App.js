@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {StyleSheet, Text, View, Animated, TouchableHighlight, Share, Image, Platform, StatusBar} from 'react-native';
 import Balloon from "react-native-balloon";
 import adverbs from './assets/adverbs.json';
 import verbs from './assets/verbs.json';
 import adjectives from './assets/adjectives.json';
 import nouns from './assets/nouns.json';
+import * as PropTypes from "prop-types";
 const initialText = 'Tap me to generate some corporate bullshit. I have much nonsense to share, so tap all you want.';
 
 export default class App extends React.Component {
@@ -42,28 +43,12 @@ export default class App extends React.Component {
                     barStyle="light-content"
                     backgroundColor="#fff"
                 />
-                <Balloon
-                    triangleDirection='bottom'
-                    triangleOffset='50%'
-                >
-                    <Text style={styles.generatedBs}>{this.state.bs}</Text>
-                </Balloon>
+                <Bullshit bs={this.state.bs}/>
                 <View style={styles.imgView}>
-                    <TouchableHighlight underlayColor={'transparent'}
-                                        onPress={() => this.generateBs()}>
-                    <Image
-                        style={styles.boss}
-                        source={require('./assets/boss.jpg')}
-                    />
-                    </TouchableHighlight>
+                    <Boss onPress={() => this.generateBs()} source={require('./assets/boss.jpg')}/>
                     {
                         this.state.bs !== initialText &&
-                        <FadeInView><TouchableHighlight underlayColor={'transparent'} onPress={() => this.onSharePress(this.state.bs)}>
-                            <Text style={styles.button}>
-                                Share
-                            </Text>
-                        </TouchableHighlight>
-                        </FadeInView>
+                        <ShareComponent onPress={() => this.onSharePress(this.state.bs)}/>
                     }
                 </View>
 
@@ -71,6 +56,50 @@ export default class App extends React.Component {
         );
     }
 }
+
+class Boss extends Component {
+    render() {
+        return <TouchableHighlight underlayColor={"transparent"}
+                                   onPress={this.props.onPress}>
+            <Image
+                style={styles.boss}
+                source={this.props.source}
+            />
+        </TouchableHighlight>;
+    }
+}
+
+Boss.propTypes = {
+    onPress: PropTypes.func,
+    source: PropTypes.any
+};
+
+class Bullshit extends Component {
+    render() {
+        return <Balloon
+            triangleDirection='bottom'
+            triangleOffset='50%'
+        >
+            <Text style={styles.generatedBs}>{this.props.bs}</Text>
+        </Balloon>;
+    }
+}
+
+Bullshit.propTypes = {bs: PropTypes.any};
+
+class ShareComponent extends Component {
+    render() {
+        return <FadeInView>
+            <TouchableHighlight underlayColor={"transparent"} onPress={this.props.onPress}>
+                <Text style={styles.button}>
+                    Share
+                </Text>
+            </TouchableHighlight>
+        </FadeInView>;
+    }
+}
+
+ShareComponent.propTypes = {onPress: PropTypes.func};
 
 class FadeInView extends React.Component {
     state = {
@@ -128,9 +157,9 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: '#DDBB66',
         fontSize: 16,
-        fontWeight: '600',
+        fontWeight: '400',
         color:'#405966',
-        backgroundColor: '#DDBB66',
+        backgroundColor: '#DDBB66'
     },
     generatedBs: {
         marginTop: 15,
@@ -151,7 +180,7 @@ const styles = StyleSheet.create({
         height: 80,
         width: 80,
         borderRadius: 40,
-        marginBottom: 30
+        marginBottom: 15
     },
     share: {
         width: 26,

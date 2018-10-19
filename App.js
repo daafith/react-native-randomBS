@@ -1,15 +1,14 @@
-import React, {Component} from 'react';
-import {Text, View, Animated, TouchableHighlight, Share, StatusBar} from 'react-native';
-import adverbs from './assets/adverbs.json';
-import verbs from './assets/verbs.json';
-import adjectives from './assets/adjectives.json';
-import nouns from './assets/nouns.json';
-import * as PropTypes from "prop-types";
-const initialText = 'Tap me to generate some corporate bullshit. I have much nonsense to share, so tap all you want.';
+import React from "react";
+import {View, Share, StatusBar} from "react-native";
+import adverbs from "./assets/adverbs.json";
+import verbs from "./assets/verbs.json";
+import adjectives from "./assets/adjectives.json";
+import nouns from "./assets/nouns.json";
 import {Bullshit} from "./components/Bullshit";
 import {Boss} from "./components/Boss";
 import {ShareButton} from "./components/ShareButton";
 import styles from "./styles"
+const initialText = 'Tap me to generate some corporate bullshit. I have much nonsense to share, so tap all you want.';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -54,7 +53,6 @@ export default class App extends React.Component {
                         <ShareButton onPress={() => this.onSharePress(this.state.bs)}/>
                     }
                 </View>
-
             </View>
         );
     }

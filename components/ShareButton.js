@@ -5,13 +5,15 @@ import * as PropTypes from "prop-types";
 
 export class ShareButton extends Component {
     render() {
-        return <FadeIntoView>
-            <TouchableHighlight underlayColor={"transparent"} onPress={this.props.onPress}>
-                <Text style={styles.button}>
-                    Share
-                </Text>
-            </TouchableHighlight>
-        </FadeIntoView>;
+        return (
+            <FadeIntoView>
+                <TouchableHighlight underlayColor={"transparent"} onPress={this.props.onPress}>
+                    <Text style={styles.button}>
+                        Share
+                    </Text>
+                </TouchableHighlight>
+            </FadeIntoView>
+        );
     }
 }
 

@@ -57,6 +57,19 @@ export default class App extends React.Component {
     }
 }
 
+class Bullshit extends Component {
+    render() {
+        return <Balloon
+            triangleDirection='bottom'
+            triangleOffset='50%'
+        >
+            <Text style={styles.generatedBs}>{this.props.bs}</Text>
+        </Balloon>;
+    }
+}
+
+Bullshit.propTypes = {bs: PropTypes.any};
+
 class Boss extends Component {
     render() {
         return <TouchableHighlight underlayColor={"transparent"}
@@ -73,19 +86,6 @@ Boss.propTypes = {
     onPress: PropTypes.func,
     source: PropTypes.any
 };
-
-class Bullshit extends Component {
-    render() {
-        return <Balloon
-            triangleDirection='bottom'
-            triangleOffset='50%'
-        >
-            <Text style={styles.generatedBs}>{this.props.bs}</Text>
-        </Balloon>;
-    }
-}
-
-Bullshit.propTypes = {bs: PropTypes.any};
 
 class ShareComponent extends Component {
     render() {

@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "RandomBs",
+    "name": "Corporate BS",
     "description": "A simple app as a sandbox project for trying out react native. It allows you to generate corporate bullshit and share it using whatever social media app you have installed on your device.",
     "slug": "RandomBs",
     "privacy": "public",
@@ -9,7 +9,7 @@
       "ios",
       "android"
     ],
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/ic_launcher.png",
     "splash": {

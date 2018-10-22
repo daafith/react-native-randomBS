@@ -21,13 +21,22 @@ const styles = StyleSheet.create({
         paddingRight: 5,
         textAlign: 'center',
         fontFamily: getFont(),
-        borderRadius: 50,
         borderWidth: 2,
         borderColor: '#DDBB66',
         fontSize: 16,
         fontWeight: '400',
         color:'#405966',
-        backgroundColor: '#DDBB66'
+        backgroundColor: '#DDBB66',
+        ...Platform.select({
+            android: {
+                borderRadius: 50,
+            },
+            ios: {
+                borderRadius: 25,
+                overflow: 'hidden',
+            },
+        }),
+
     },
     generatedBs: {
         marginTop: 15,

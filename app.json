@@ -29,7 +29,7 @@
     },
     "android": {
       "package": "nl.testbeacon.randombs",
-      "versionCode": 2
+      "versionCode": 3
     },
     "githubUrl": "https://github.com/daafith/react-native-randomBS"
   }

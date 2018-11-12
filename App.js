@@ -16,6 +16,13 @@ export default class App extends React.Component {
         this.state = {bs: initialText};
     }
 
+    componentDidUpdate(oldProps, oldState) {
+        const previousWords = oldState.bs.split(' ');
+        const currentWords = this.state.bs.split(' ');
+        if (previousWords.some(w=> currentWords.includes(w))) {
+            this.generateBs();
+        }
+    }
     generateBs = () => {
         this.setState({
             bs: this.formattedBs()
@@ -31,7 +38,7 @@ export default class App extends React.Component {
         return arr[x];
     }
 
-    onSharePress = (text) => {
+    onSharePress = text => {
         const shareOptions = {
             message: text,
         };

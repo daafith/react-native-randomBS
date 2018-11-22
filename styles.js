@@ -1,7 +1,7 @@
 import {Platform, StyleSheet} from "react-native";
 
 function getFont() {
-    return Platform.OS === 'ios' ? 'American Typewriter' : 'Roboto';
+    return Platform.OS === 'ios' ? 'System' : 'Roboto';
 }
 
 const styles = StyleSheet.create({

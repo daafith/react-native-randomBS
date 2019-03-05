@@ -4,12 +4,12 @@
     "description": "A simple app as a sandbox project for trying out react native. It allows you to generate corporate bullshit and share it using whatever social media app you have installed on your device.",
     "slug": "RandomBs",
     "privacy": "public",
-    "sdkVersion": "31.0.0",
+    "sdkVersion": "32.0.0",
     "platforms": [
       "ios",
       "android"
     ],
-    "version": "1.1.2",
+    "version": "1.1.3",
     "orientation": "portrait",
     "icon": "./assets/ic_launcher.png",
     "splash": {
@@ -25,11 +25,14 @@
     ],
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "nl.testbeacon.corporatebs"
+      "bundleIdentifier": "nl.testbeacon.corporatebs",
+      "config": {
+        "usesNonExemptEncryption": false
+      }
     },
     "android": {
       "package": "nl.testbeacon.randombs",
-      "versionCode": 4,
+      "versionCode": 5,
       "permissions": []
     },
     "githubUrl": "https://github.com/daafith/react-native-randomBS"
